@@ -16,7 +16,7 @@ The bot listens for new blocks, and when certain conditions are met, it sends a 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/flashbots-claimer-bot.git
+git clone https://github.com/codeesura/flashbots-claimer-bot.git
 cd flashbots-claimer-bot
 ```
 
