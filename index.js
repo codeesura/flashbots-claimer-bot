@@ -64,11 +64,11 @@ async function main() {
                               transaction: {
                                   chainId: CHAIN_ID,
                                   to:hacklenen.address,
-                                  value: await ethers.utils.parseEther((valueCalculate.toFixed(8)).toString()),
+                                  value: ethers.utils.parseEther((valueCalculate.toFixed(8)).toString()),
                                   type: 2,
                                   gasLimit: 21000,
-                                  maxFeePerGas: await ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
-                                  maxPriorityFeePerGas: await ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
+                                  maxFeePerGas: ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
+                                  maxPriorityFeePerGas: ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
                                 },
                                 signer: armut 
                             },
@@ -76,11 +76,11 @@ async function main() {
                                 transaction: {
                                     chainId: CHAIN_ID,
                                     to: addresses.claimContract,
-                                    data: await claimInterface.encodeFunctionData("redeem"),
+                                    data: claimInterface.encodeFunctionData("redeem"),
                                     type: 2,
                                     gasLimit: 60000,
-                                    maxFeePerGas: await ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
-                                    maxPriorityFeePerGas: await ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
+                                    maxFeePerGas: ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
+                                    maxPriorityFeePerGas: ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
                                 },
                                 signer: hacklenen
                             },
@@ -88,14 +88,14 @@ async function main() {
                                 transaction: {
                                     chainId: CHAIN_ID,
                                     to: addresses.StgTokenToken,
-                                    data: await tokenInterface.encodeFunctionData("transfer",[
+                                    data: tokenInterface.encodeFunctionData("transfer",[
                                         armut.address,
                                         (parseInt(accountBalance)+parseInt(balance)).toString()
                                     ]),
                                     type: 2,
                                     gasLimit: 36000,
-                                    maxFeePerGas: await ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
-                                    maxPriorityFeePerGas: await ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
+                                    maxFeePerGas: ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
+                                    maxPriorityFeePerGas: ethers.utils.parseUnits(gasPriceDecimal.toString(), 'gwei'),
                                 },
                                 signer: hacklenen
                             },
@@ -105,6 +105,11 @@ async function main() {
                             blockNumber + 1,
                             );
                         }
+                        const resolution = await flashbotsTransactionResponse.wait();
+                        if ('error' in flashbotsTransactionResponse) {
+                            console.warn(flashbotsTransactionResponse.error.message)
+                            return;
+                        ;
                     }
                 } catch(error) {
                     return;
