@@ -54,7 +54,7 @@ async function main() {
                   const StgTokenPrice = WETHPrice/(1/((parseInt(StgTokenSlot0[0].toString()))**2 / 2**192))
                   
                   const gweiCalculate = (21000 * gasPriceDecimal) / 1000000000 ;
-                  const valueCalculate = roundToNextDecimal((gasPriceDecimal * 96000)/1000000000,8) ;
+                  const valueCalculate = roundToNextDecimal((gasPriceDecimal * 91000)/1000000000,8) ;
                   const costCalculate = gweiCalculate + valueCalculate ;
                   
                   if ((costCalculate * WETHPrice) < (balanceDecimal * StgTokenPrice - 0.3)) {
