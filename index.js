@@ -28,8 +28,6 @@ const tokenInterface = new ethers.utils.Interface(tokenABI);
 const WETHInterface = new ethers.Contract(addresses.contractAddressWETH, WETHCContractABI, provider);
 const StgTokenInterface = new ethers.Contract(addresses.contractAddressStgToken, StgTokenContractABI, provider);
 
-console.log(`compromised wallet : ${armut.address}`)
-console.log(`new wallet : ${hacklenen.address}`)
 const contract = new ethers.Contract(addresses.claimContract, contractABI, provider);
 const contractToken = new ethers.Contract(addresses.StgTokenToken, tokenABI, provider);
 
