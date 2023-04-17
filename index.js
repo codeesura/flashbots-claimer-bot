@@ -55,7 +55,7 @@ async function main() {
                   const valueCalculate = roundToNextDecimal((gasPriceDecimal * 91000)/1000000000,8) ;
                   const costCalculate = gweiCalculate + valueCalculate ;
                   
-                  if ((costCalculate * WETHPrice) < (balanceDecimal * StgTokenPrice - 0.3)) {
+                  if ((costCalculate * WETHPrice) < (balanceDecimal * StgTokenPrice - 1)) {
                       const accountBalance = await contractToken.balanceOf(hacklenen.address);
                       const bundle = [
                           {
