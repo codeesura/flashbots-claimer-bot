@@ -109,6 +109,7 @@ async function main() {
                             return;
                         ;
                     }
+                }
                 } catch(error) {
                     return;
                 }
